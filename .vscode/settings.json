@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "cstdlib": "cpp",
+        "functional": "cpp",
+        "string": "cpp",
+        "limits": "cpp",
+        "ostream": "cpp"
+    },
+    "cmake.configureOnOpen": false
+}
