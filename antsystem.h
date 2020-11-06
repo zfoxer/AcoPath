@@ -38,16 +38,16 @@
 
 struct edgeHash
 {
-    size_t operator()(const AdaptiveSystem::Edge& edge) const
-    {
-        return std::hash<long int>()(edge.id);
-    }
+	size_t operator()(const AdaptiveSystem::Edge& edge) const
+	{
+		return std::hash<long int>()(edge.id);
+	}
 };
 
 class AntSystem : public AdaptiveSystem
 {
 public:
-    static const int ANTS = 250;
+	static const int ANTS = 250;
 	static const int ITERATIONS = 150;
 	static const int PHERO_QUANTITY = 100;
 	static const double A_PAR;
