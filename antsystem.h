@@ -20,7 +20,7 @@
  *
  */
 
-#include <map>
+#include <unordered_map>
 #include <vector>
 #include <set>
 #include <queue>
@@ -36,11 +36,19 @@
 #ifndef ANTSYSTEM_H
 #define ANTSYSTEM_H
 
+struct edgeHash
+{
+    size_t operator()(const AdaptiveSystem::Edge& edge) const
+    {
+        return std::hash<long int>()(edge.id);
+    }
+};
+
 class AntSystem : public AdaptiveSystem
 {
 public:
-	static const int ITERATIONS = 10;
-	static const int ANTS = 30;
+    static const int ANTS = 250;
+	static const int ITERATIONS = 150;
 	static const int PHERO_QUANTITY = 100;
 	static const double A_PAR;
 	static const double B_PAR;
@@ -60,7 +68,7 @@ protected:
 	virtual void goAnt(int, int, std::vector<int>&);
 	virtual double calcTourLength(std::vector<int>&);
 	bool isCyclic(const std::vector<int>&);
-	std::map<AdaptiveSystem::Edge, double> edge2phero;
+	std::unordered_map<AdaptiveSystem::Edge, double, edgeHash> edge2phero;
 
 private:
 	int ants;
