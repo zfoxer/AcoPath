@@ -53,6 +53,9 @@ std::vector<int> AntSystem::path(int start, int end)
 {
 	std::vector<int> bestPath;
 	double shortest = std::numeric_limits<double>::max();
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<> distro(0, 1);
 	
 	for(int i = 0; i < iterations; ++i)
 	{
@@ -61,7 +64,7 @@ std::vector<int> AntSystem::path(int start, int end)
 		for(int j = 1; j <= ants; ++j)
 		{
 			std::vector<int> antTrace;
-			goAnt(start, end, antTrace);
+			goAnt(start, end, antTrace, gen, distro);
 
 			if(antTrace.size() > 1 && antTrace.front() == start 
 					&& antTrace.back() == end)
@@ -125,12 +128,10 @@ void AntSystem::updateTrails(std::map<int, std::vector<int> >& antTraces,
 	}
 }
 
-void AntSystem::goAnt(int start, int end, std::vector<int>& trace)
+void AntSystem::goAnt(int start, int end, std::vector<int>& trace, 
+		std::mt19937& gen, std::uniform_real_distribution<>& distro)
 {
-	std::vector<int> tempTrace(trace);
-	tempTrace.push_back(start);
-
-	if(isCyclic(tempTrace))
+	if(isCyclic(start, trace))
 	{
 		trace.clear();
 		return;
@@ -147,9 +148,6 @@ void AntSystem::goAnt(int start, int end, std::vector<int>& trace)
 	for(int neigh : neighs)
 		probs[index++] = prob(start, neigh);
 
-	
-	std::random_device rd; 	std::mt19937 gen(rd());
-	std::uniform_real_distribution<> distro(0, 1);
 	double value = distro(gen);
 	index = 0; double sum = 0;
 	for(; index < (int)neighs.size(); ++index)
@@ -167,7 +165,7 @@ void AntSystem::goAnt(int start, int end, std::vector<int>& trace)
 	}
 		
 	trace.push_back(start);	
-	goAnt(chosenNeighbour, end, trace);
+	goAnt(chosenNeighbour, end, trace, gen, distro);
 }
 
 double AntSystem::calcTourLength(std::vector<int>& tour)
@@ -244,13 +242,14 @@ std::vector<int> AntSystem::availNeighbours(int node)
 	return neighbours;
 }
 
-bool AntSystem::isCyclic(const std::vector<int>& nodes)
+bool AntSystem::isCyclic(int nd, const std::vector<int>& nodes)
 {
 	std::set<int> uniqueNodes;
+	uniqueNodes.insert(nd);
 	for(int node : nodes)
 		uniqueNodes.insert(node);
 	
-	return nodes.size() != uniqueNodes.size();
+	return nodes.size() + 1 != uniqueNodes.size();
 }
 
 const double AntSystem::EVAPO_RATE = 0.5;

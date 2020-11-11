@@ -64,10 +64,12 @@ protected:
 	double pheromone(int, int);
 	virtual double diffPheromone(double);
 	std::vector<int> availNeighbours(int);
-	virtual void updateTrails(std::map<int, std::vector<int> >&, std::map<int, double>&);
-	virtual void goAnt(int, int, std::vector<int>&);
+	virtual void updateTrails(std::map<int, std::vector<int> >&, 
+			std::map<int, double>&);
+	virtual void goAnt(int, int, std::vector<int>&, std::mt19937&, 
+			std::uniform_real_distribution<>&);
 	virtual double calcTourLength(std::vector<int>&);
-	bool isCyclic(const std::vector<int>&);
+	bool isCyclic(int, const std::vector<int>&);
 	std::unordered_map<AdaptiveSystem::Edge, double, edgeHash> edge2phero;
 
 private:
