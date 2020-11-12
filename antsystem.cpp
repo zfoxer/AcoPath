@@ -1,7 +1,7 @@
 /*
  * AcoPath: Shortest path calculation using Ant Colony Optimization
  * Copyright (C) 2014-2020 by Constantine Kyriakopoulos
- * @version 0.3
+ * @version 0.9
  *
  * @section LICENSE
  * 
@@ -93,6 +93,7 @@ std::vector<int> AntSystem::path(int start, int end)
 void AntSystem::clear()
 {
 	edge2phero.clear();
+    edges.clear();
 }
 
 double AntSystem::diffPheromone(double length)
