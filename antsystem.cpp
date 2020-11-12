@@ -93,7 +93,7 @@ std::vector<int> AntSystem::path(int start, int end)
 void AntSystem::clear()
 {
 	edge2phero.clear();
-    edges.clear();
+	edges.clear();
 }
 
 double AntSystem::diffPheromone(double length)
@@ -252,9 +252,3 @@ bool AntSystem::isCyclic(int nd, const std::vector<int>& nodes)
 	
 	return nodes.size() + 1 != uniqueNodes.size();
 }
-
-const double AntSystem::EVAPO_RATE = 0.5;
-
-const double AntSystem::A_PAR = 1;
-
-const double AntSystem::B_PAR = 5;

@@ -50,9 +50,9 @@ public:
 	static const int ANTS = 250;
 	static const int ITERATIONS = 150;
 	static const int PHERO_QUANTITY = 100;
-	static const double A_PAR;
-	static const double B_PAR;
-	static const double EVAPO_RATE;
+	static constexpr double A_PAR = 1;
+	static constexpr double B_PAR = 5;
+	static constexpr double EVAPO_RATE = 0.5;
 	AntSystem(const std::string&, int = 0, int = 0);
 	virtual ~AntSystem();
 	virtual std::vector<int> path(int, int);
