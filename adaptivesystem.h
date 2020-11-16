@@ -1,7 +1,7 @@
 /*
  * AcoPath: Shortest path calculation using Ant Colony Optimization
  * Copyright (C) 2014-2020 by Constantine Kyriakopoulos
- * @version 0.9
+ * @version 0.9.1
  *
  * @section LICENSE
  *  

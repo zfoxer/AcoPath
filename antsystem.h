@@ -1,7 +1,7 @@
 /*
  * AcoPath: Shortest path calculation using Ant Colony Optimization
  * Copyright (C) 2014-2020 by Constantine Kyriakopoulos
- * @version 0.9
+ * @version 0.9.1
  *
  * @section LICENSE
  * 
@@ -66,8 +66,7 @@ protected:
 	std::vector<int> availNeighbours(int);
 	virtual void updateTrails(std::map<int, std::vector<int> >&, 
 			std::map<int, double>&);
-	virtual void goAnt(int, int, std::vector<int>&, std::mt19937&, 
-			std::uniform_real_distribution<>&);
+	virtual void goAnt(int, int, std::vector<int>&);
 	virtual double calcTourLength(std::vector<int>&);
 	bool isCyclic(int, const std::vector<int>&);
 	std::unordered_map<AdaptiveSystem::Edge, double, edgeHash> edge2phero;
@@ -75,6 +74,7 @@ protected:
 private:
 	int ants;
 	int iterations;
+	std::mt19937_64 gen;
 };
 
 #endif // ANTSYSTEM_H

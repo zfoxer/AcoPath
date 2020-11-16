@@ -1,7 +1,7 @@
 /*
  * AcoPath: Shortest path calculation using Ant Colony Optimization
  * Copyright (C) 2014-2020 by Constantine Kyriakopoulos
- * @version 0.9
+ * @version 0.9.1
  * 
  * @section LICENSE
  *  
@@ -22,7 +22,7 @@
 
 #include "antsystem.h"
 
-int simpleRun()
+bool simpleRun()
 {
 	AdaptiveSystem* aco = new AntSystem("topology.json", AntSystem::ANTS, 
 			AntSystem::ITERATIONS);
@@ -32,10 +32,10 @@ int simpleRun()
 	std::cout << std::endl;
 	delete aco;
 
-	return nodePath.size() ? EXIT_SUCCESS : EXIT_FAILURE;
+	return nodePath.size() > 0;
 }
 
 int main(int argc, char *argv[])
 {
-	return simpleRun();
+	return simpleRun() ? EXIT_SUCCESS : EXIT_FAILURE;
 }

@@ -1,7 +1,7 @@
 /*
  * AcoPath: Shortest path calculation using Ant Colony Optimization
  * Copyright (C) 2014-2020 by Constantine Kyriakopoulos
- * @version 0.9
+ * @version 0.9.1
  *
  * @section LICENSE
  * 
@@ -44,7 +44,10 @@ AntSystem::AntSystem(const std::string& filename, int ants, int iterations)
 	{
 		this->ants = ANTS;
 		this->iterations = ITERATIONS;
-	}	
+	}
+
+	std::random_device rd;
+	gen = std::mt19937_64(rd());	
 }
 
 AntSystem::~AntSystem() { }
@@ -53,9 +56,6 @@ std::vector<int> AntSystem::path(int start, int end)
 {
 	std::vector<int> bestPath;
 	double shortest = std::numeric_limits<double>::max();
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_real_distribution<> distro(0, 1);
 	
 	for(int i = 0; i < iterations; ++i)
 	{
@@ -64,7 +64,7 @@ std::vector<int> AntSystem::path(int start, int end)
 		for(int j = 1; j <= ants; ++j)
 		{
 			std::vector<int> antTrace;
-			goAnt(start, end, antTrace, gen, distro);
+			goAnt(start, end, antTrace);
 
 			if(antTrace.size() > 1 && antTrace.front() == start 
 					&& antTrace.back() == end)
@@ -129,8 +129,7 @@ void AntSystem::updateTrails(std::map<int, std::vector<int> >& antTraces,
 	}
 }
 
-void AntSystem::goAnt(int start, int end, std::vector<int>& trace, 
-		std::mt19937& gen, std::uniform_real_distribution<>& distro)
+void AntSystem::goAnt(int start, int end, std::vector<int>& trace)
 {
 	if(isCyclic(start, trace))
 	{
@@ -149,6 +148,7 @@ void AntSystem::goAnt(int start, int end, std::vector<int>& trace,
 	for(int neigh : neighs)
 		probs[index++] = prob(start, neigh);
 
+	std::uniform_real_distribution<> distro(0, 1);
 	double value = distro(gen);
 	index = 0; double sum = 0;
 	for(; index < (int)neighs.size(); ++index)
@@ -166,7 +166,7 @@ void AntSystem::goAnt(int start, int end, std::vector<int>& trace,
 	}
 		
 	trace.push_back(start);	
-	goAnt(chosenNeighbour, end, trace, gen, distro);
+	goAnt(chosenNeighbour, end, trace);
 }
 
 double AntSystem::calcTourLength(std::vector<int>& tour)
