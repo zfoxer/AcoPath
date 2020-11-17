@@ -18,7 +18,7 @@ This is a heuristic method, i.e., optimal results are not always feasible. Accor
 
 ## Prerequisites to build
 
-There are only two requirements, i.e., the Boost Library and the availability of C++20 or C++17 standard. Boost is utilised for parsing the JSON representation of the topology. Tested with Clang 11 and libc++ from the LLVM project.
+There are only two requirements, i.e., the Boost Library and the availability of C++20 or C++17 standard. Boost is utilised for parsing the JSON representation of the topology. Tested with clang 11 and libc++ from the LLVM project.
 
 
 ## Usage
@@ -33,3 +33,7 @@ Create a new instance of <em>AntSystem</em> in your code passing as parameters t
 
 [2] Bullnheimer, B., Hartl, R.F. and Strauss, C., 1997. A new rank based version of the Ant System. A computational study.
 ```
+
+## Changelog
+
+0.9      2020-11-12    Initial public release
