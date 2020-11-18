@@ -27,8 +27,8 @@ bool simpleRun()
 	AdaptiveSystem* aco = new AntSystem("topology.json", AntSystem::ANTS, 
 			AntSystem::ITERATIONS);
 	auto nodePath = aco->path(0, 19);
-	for(int n : nodePath)
-		std::cout << n << " ";
+	for(int node : nodePath)
+		std::cout << node << " ";
 	std::cout << std::endl;
 	delete aco;
 

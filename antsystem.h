@@ -23,7 +23,6 @@
 #include <unordered_map>
 #include <vector>
 #include <set>
-#include <queue>
 #include <utility>
 #include <algorithm>
 #include <random>
@@ -54,11 +53,13 @@ public:
 	static constexpr double B_PAR = 5;
 	static constexpr double EVAPO_RATE = 0.5;
 	AntSystem(const std::string&, int = 0, int = 0);
+	AntSystem(int = 0, int = 0);
 	virtual ~AntSystem();
 	virtual std::vector<int> path(int, int);
 	virtual void clear();
+	virtual void insertEdge(int, int, double) noexcept(false);
 
-protected:
+private:
 	double prob(int, int);
 	double heuInfo(int, int);
 	double pheromone(int, int);
@@ -70,8 +71,6 @@ protected:
 	virtual double calcTourLength(std::vector<int>&);
 	bool isCyclic(int, const std::vector<int>&);
 	std::unordered_map<AdaptiveSystem::Edge, double, edgeHash> edge2phero;
-
-private:
 	int ants;
 	int iterations;
 	std::mt19937_64 gen;

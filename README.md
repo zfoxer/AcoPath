@@ -1,4 +1,4 @@
-AcoPath: Ant Colony Optimisation algorithm for the shortest path problem
+# AcoPath: Ant Colony Optimisation algorithm for the shortest path problem
 
 ```python
 Copyright (C) 2014-2020 by Constantine Kyriakopoulos
@@ -34,6 +34,10 @@ Create a new instance of <em>AntSystem</em> in your code passing as parameters t
 [2] Bullnheimer, B., Hartl, R.F. and Strauss, C., 1997. A new rank based version of the Ant System. A computational study.
 ```
 
+
 ## Changelog
 
+<pre>
+0.9.1    2020-1X-XX    Extended the interface for inserting single edges
 0.9      2020-11-12    Initial public release
+</pre>
