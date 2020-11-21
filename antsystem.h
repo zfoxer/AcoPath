@@ -65,7 +65,7 @@ private:
 	double pheromone(int, int);
 	virtual double diffPheromone(double);
 	std::vector<int> availNeighbours(int);
-	virtual void updateTrails(std::map<int, std::vector<int> >&, 
+	virtual void updateTrails(std::map<int, std::vector<int>>&, 
 			std::map<int, double>&);
 	virtual void goAnt(int, int, std::vector<int>&);
 	virtual double calcTourLength(std::vector<int>&);

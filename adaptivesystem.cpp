@@ -119,8 +119,8 @@ void AdaptiveSystem::initTopo(const std::string& filename)
 /**
  * Inserts an edge.
  * 
- * @param src Source node
- * @param dest Destination node
+ * @param src Starting node
+ * @param dest Ending node
  * @param weight Weight for the edge
  */
 void AdaptiveSystem::insertEdge(int src, int dest, double weight) noexcept(false)

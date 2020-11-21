@@ -102,7 +102,8 @@ std::vector<int> AntSystem::path(int start, int end)
 	{
 		std::map<int, std::vector<int> > antTraces;
 		std::map<int, double> tourLengths;
-		// Release ants from source node and let them traverse the graph to reach destination
+		// Release ants from source node and let them traverse the graph 
+		// structure to reach a destination
 		for(int j = 1; j <= ants; ++j)
 		{
 			// This trace will be used by this ant to store its node sequence
@@ -162,10 +163,10 @@ double AntSystem::diffPheromone(double length)
  * @param antTraces Created traces by ants
  * @param tourLengths The length of traces
  */
-void AntSystem::updateTrails(std::map<int, std::vector<int> >& antTraces,
+void AntSystem::updateTrails(std::map<int, std::vector<int>>& antTraces,
 							 std::map<int, double>& tourLengths)
 {
-	// First, evaporate to a certain extent, all existing pheromone levels
+	// First, evaporate all existing pheromone levels
 	for(auto& pair : edge2phero)
 		pair.second *= (1 - EVAPO_RATE);
 
@@ -185,7 +186,8 @@ void AntSystem::updateTrails(std::map<int, std::vector<int> >& antTraces,
 				continue;
 			}
 			
-			// In case it's valid, add an amount of pheromone that depends on each tour length
+			// In case it's valid, add an amount of pheromone that depends on 
+			// each tour length
 			for(unsigned int i = 0; i < trace.size() - 1; ++i)
 				if(trace.at(i) == edgeStart && trace.at(i + 1) == edgeEnd)
 					edge2phero[pair.first] += diffPheromone(tourLengths[(*ait).first]);
@@ -196,7 +198,7 @@ void AntSystem::updateTrails(std::map<int, std::vector<int> >& antTraces,
 
 /**
  * Recursive method that finds a suitable trace from a starting 
- * point to a specific destination.
+ * point to a specific destination by unleashing an ant.
  *
  * @param start Path's starting point
  * @param end Path's destination
@@ -204,7 +206,7 @@ void AntSystem::updateTrails(std::map<int, std::vector<int> >& antTraces,
  */
 void AntSystem::goAnt(int start, int end, std::vector<int>& trace)
 {
-	// Detect cycles and give up
+	// Detect cycles and give up this attempt
 	if(isCyclic(start, trace))
 	{
 		trace.clear();
@@ -217,7 +219,7 @@ void AntSystem::goAnt(int start, int end, std::vector<int>& trace)
 		return;
 	}
 
-	// Get available physical neighbors
+	// Get available physical neighbours
 	std::vector<int> neighs = availNeighbours(start);
 	double probs[neighs.size()];
 	int index = 0;
@@ -227,7 +229,8 @@ void AntSystem::goAnt(int start, int end, std::vector<int>& trace)
 
 	std::uniform_real_distribution<> distro(0, 1);
 	double value = distro(gen);
-	// Sort probabilities and through a uniform dice pick up an index domain
+	// Sort probabilities in range [0, 1] and use a uniform dice to 
+	// pick up an index domain
 	index = 0; double sum = 0;
 	for(; index < (int)neighs.size(); ++index)
 	{
@@ -245,7 +248,7 @@ void AntSystem::goAnt(int start, int end, std::vector<int>& trace)
 		return;
 	}
 		
-	// Go to next neighbour
+	// Recurse to the next neighbour
 	trace.push_back(start);	
 	goAnt(chosenNeighbour, end, trace);
 }
@@ -280,7 +283,8 @@ double AntSystem::calcTourLength(std::vector<int>& tour)
 }
 
 /**
- * Returns the probability of selecting the second input node as destination from the first one.
+ * Returns the probability of selecting the second node as destination, from 
+ * the first one.
  *
  * @param edgeStart The edge's starting point
  * @param edgeEnd The edge's end point
@@ -301,7 +305,8 @@ double AntSystem::prob(int edgeStart, int edgeEnd)
 }
 
 /**
- * Returns the 'amount' of heuristic information from first input node to the second.
+ * Returns the 'amount' of heuristic information from first input node to 
+ * the second.
  *
  * @param edgeStart The edge's starting point
  * @param edgeEnd The edge's end point
@@ -341,7 +346,7 @@ double AntSystem::pheromone(int edgeStart, int edgeEnd)
 }
 
 /**
- * Finds all available neighbors of input node.
+ * Finds all available neighbours of input node.
  *
  * @param node The input node
  * @return std::vector<int> Container with nodes
@@ -350,7 +355,8 @@ std::vector<int> AntSystem::availNeighbours(int node)
 {
 	std::vector<int> neighbours;
 	
-	// Find all edges that start from input node and return its other endpoints
+	// Find all edges that start from the input node and return its 
+	// other endpoints
 	std::for_each(edge2phero.cbegin(), edge2phero.cend(),
 			[&neighbours, node](std::pair<Edge, double> pair)
 			{

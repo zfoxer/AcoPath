@@ -9,7 +9,7 @@ License: GNU GPL Version 3
 
 ## About the project
 
-The shortest path problem is solved by many methods. Heuristics offer lower complexity in expense of accuracy. There are many use cases where the lower accuracy is acceptable in return of lower consumption of computing resources.
+The shortest path problem is solved by many methods. Heuristics offer lower complexity in expense of accuracy. There are many use-cases where the lower accuracy is acceptable in return of lower consumption of computing resources.
 
 The basic idea of the Ant System (AS) [1, 2] is that virtual ants are exploited for finding paths with a specific property, e.g., short distance between physical nodes, in the same way nature guides physical ants. A special chemical substance is being deposited upon their path which raises the probability for other ants to follow it during subsequent traversals. When this substance concentrates in high levels on a path, all subsequent ants have higher probability to follow it and increment it as well even more. Evaporation takes place on paths that are less traversed. Usually, the path with the highest pheromone concentration is the shortest path. The AS emulates this nature's behaviour with satisfying results solving computational problems. When the number of virtual ants and iterations are high enough, the right paths are usually found under polynomial complexity.
 
@@ -38,6 +38,6 @@ Create a new instance of <em>AntSystem</em> in your code passing as parameters t
 ## Changelog
 
 <pre>
-0.9.1    2020-1X-XX    Extended the interface for inserting single edges
+0.9.1    2020-11-21    Extended the interface for inserting single edges
 0.9      2020-11-12    Initial public release
 </pre>
