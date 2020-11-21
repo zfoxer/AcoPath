@@ -42,19 +42,7 @@ AntSystem::AntSystem(const std::string& filename, int ants, int iterations)
 		std::cerr << e.what() << std::endl;
 	}
 
-	if(ants > 0 && iterations > 0)
-	{
-		this->ants = ants;
-		this->iterations = iterations;
-	}
-	else
-	{
-		this->ants = ANTS;
-		this->iterations = ITERATIONS;
-	}
-
-	std::random_device rd;
-	gen = std::mt19937_64(rd());	
+	init(ants, iterations);
 }
 
 /**
@@ -64,6 +52,22 @@ AntSystem::AntSystem(const std::string& filename, int ants, int iterations)
  * @param iterations Number of iterations
  */
 AntSystem::AntSystem(int ants, int iterations) 
+{
+	init(ants, iterations);
+}
+
+/**
+ * Empty destructor.
+ */
+AntSystem::~AntSystem() { }
+
+/**
+ * Initialiser for ants, iterations and random numner generator.
+ * 
+ * @param ants Number of ants to unlease in each iteration
+ * @param iterations Number of iterations
+ */
+void AntSystem::init(int ants, int iterations)
 {
 	if(ants > 0 && iterations > 0)
 	{
@@ -77,13 +81,8 @@ AntSystem::AntSystem(int ants, int iterations)
 	}
 
 	std::random_device rd;
-	gen = std::mt19937_64(rd());	
+	gen = std::mt19937_64(rd());
 }
-
-/**
- * Empty destructor.
- */
-AntSystem::~AntSystem() { }
 
 /**
  * Finds the best path from a source node to a destination using the Ant System.

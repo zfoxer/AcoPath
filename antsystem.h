@@ -60,6 +60,7 @@ public:
 	virtual void insertEdge(int, int, double) noexcept(false);
 
 private:
+	void init(int, int);
 	double prob(int, int);
 	double heuInfo(int, int);
 	double pheromone(int, int);
