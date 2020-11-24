@@ -1,4 +1,4 @@
-# AcoPath: Ant Colony Optimisation algorithm for the shortest path problem
+# AcoPath: Ant Colony Optimization algorithm for the shortest path problem
 
 ```python
 Copyright (C) 2014-2020 by Constantine Kyriakopoulos
@@ -18,7 +18,7 @@ This is a heuristic method, i.e., optimal results are not always feasible. Accor
 
 ## Prerequisites to build
 
-There are only two requirements, i.e., the Boost Library and the availability of C++20 or C++17 standard. Boost is utilised for parsing the JSON representation of the topology. Tested with clang 11 and libc++ from the LLVM project.
+There are only two requirements, i.e., the Boost Library and the availability of C++20 or C++17 standard. Boost is utilised for parsing the JSON representation of the topology. Tested with Clang 11 and libc++ from the LLVM project.
 
 
 ## Usage
@@ -30,8 +30,7 @@ Create a new instance of <em>AntSystem</em> in your code passing as parameters t
 
 ```python
 [1] Dorigo, M., Birattari, M. and Stutzle, T., 2006. Ant colony optimization. IEEE computational intelligence magazine, 1(4), pp.28-39.
-
-[2] Bullnheimer, B., Hartl, R.F. and Strauss, C., 1997. A new rank based version of the Ant System. A computational study.
+[2] Dorigo, M. and Stützle, T., 2019. Ant colony optimization: overview and recent advances. In Handbook of metaheuristics (pp. 311-351). Springer, Cham.
 ```
 
 
