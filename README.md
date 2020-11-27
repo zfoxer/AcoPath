@@ -1,8 +1,8 @@
 # AcoPath: Ant Colony Optimization algorithm for the shortest path problem
 
 ```python
-Copyright (C) 2014-2020 by Constantine Kyriakopoulos<br/>
-Version: 0.9.1<br/>
+Copyright (C) 2014-2020 by Constantine Kyriakopoulos
+Version: 0.9.1
 License: GNU GPL Version 3
 ```
 
