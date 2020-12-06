@@ -1,7 +1,7 @@
 # AcoPath: Ant Colony Optimization algorithm for the shortest path problem
 
 ```python
-Copyright (C) 2014-2020 by Constantine Kyriakopoulos
+Copyright (C) 2014-2020 by Constantine Kyriakopoulos, zfox@users.sourceforge.net
 Version: 0.9.1
 License: GNU GPL Version 3
 ```
@@ -11,7 +11,7 @@ License: GNU GPL Version 3
 
 The shortest path problem is solved by many methods including heuristics that offer lower complexity in expense of accuracy. There are many use-cases where the lower accuracy is acceptable in return of lower consumption of computing resources or the ability to adapt to a constantly changing operating environment.
 
-The basic idea of the Ant System (AS) [1, 2] is that virtual ants are exploited for finding paths with a specific property, e.g., short distance between physical nodes, in the same way nature guides physical ants. A special chemical substance is being deposited upon their path which raises the probability for other ants to follow it during subsequent traversals. When this substance concentrates in high levels on a path, all subsequent ants have higher probability to follow it and increment it as well even more. Evaporation takes place on paths that are less traversed. Usually, the path with the highest pheromone concentration is the shortest path. The AS emulates this nature's behaviour with satisfying results solving computational problems. When the number of virtual ants and iterations are high enough, the right paths are usually found under polynomial complexity.
+The basic idea of the Ant System (AS) [1, 2] is that virtual ants are exploited for finding paths with a specific property, e.g., short distance between physical nodes, in the same way nature guides physical ants. A special chemical substance is being deposited upon their path which raises the probability for other ants to follow it during subsequent traversals. When this substance concentrates in high levels on a path, all subsequent ants have higher probability to follow it and increment it as well. Evaporation takes place on paths that are less traversed. Usually, the path with the highest pheromone concentration is the shortest path. The AS emulates this nature's behaviour with satisfying results solving computational problems. When the number of virtual ants and iterations are high enough, the right paths are usually found under polynomial complexity.
 
 This is a heuristic method, i.e., optimal results are not always feasible. According to topology's resources like the node and edge numbers, the proper numbers of iterations and virtual ants must be used. Large numbers lead to paths with higher probability of being optimal but more computational resources are consumed.
 
@@ -30,8 +30,8 @@ Create a new instance of <em>AntSystem</em> in your code passing as arguments th
 ## Related work
 
 ```python
-[1] Dorigo, M., Birattari, M. and Stutzle, T., 2006. Ant colony optimization. IEEE computational intelligence magazine, 1(4), pp.28-39.
-[2] Dorigo, M. and Stützle, T., 2019. Ant colony optimization: overview and recent advances. In Handbook of metaheuristics (pp. 311-351). Springer, Cham.
+[1] Dorigo, M., Birattari, M. and Stutzle, T., 2006. Ant colony optimization. IEEE computational intelligence magazine, 1(4), pp. 28-39.
+[2] Dorigo, M. and Stützle, T., 2019. Ant colony optimization: overview and recent advances. In Handbook of metaheuristics, pp. 311-351. Springer, Cham.
 ```
 
 
